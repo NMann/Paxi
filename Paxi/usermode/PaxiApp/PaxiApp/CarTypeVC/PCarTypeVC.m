@@ -199,8 +199,6 @@
                 [carDetailArray addObject:[carDetailDictionary mutableCopy]];
                
             }
-            
-        //    [carDetailArray addObject:[dic objectForKey:@"data"]];
              [self m_UpdateInfo];
             self.CarCollectionView.delegate=self;
             self.CarCollectionView.dataSource=self;

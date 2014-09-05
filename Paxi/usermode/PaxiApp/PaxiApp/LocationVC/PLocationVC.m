@@ -106,7 +106,6 @@
         [locationNameArray addObjectsFromArray:[[responseDict objectForKey:@"data"] valueForKey:@"locationname"]];
         [self.locationTableView reloadData];
     }
-    
 }
 #pragma mark - TableView Delegate and DataSource Method-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

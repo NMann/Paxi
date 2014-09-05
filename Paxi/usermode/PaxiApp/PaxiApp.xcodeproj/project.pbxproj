@@ -109,6 +109,17 @@
 		E4929C8019A731DD0031C3C6 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E4929C7F19A731DD0031C3C6 /* CustomAnnotation.m */; };
 		E4929C8219A731E30031C3C6 /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = E4929C8119A731E30031C3C6 /* marker.png */; };
 		E4B18E2A19A20E2800687652 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B18E2919A20E2800687652 /* SDWebImage.framework */; };
+		E4B6C6A819B9982E00602D46 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6A719B9982E00602D46 /* AVFoundation.framework */; };
+		E4B6C6AA19B9983A00602D46 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6A919B9983A00602D46 /* CoreText.framework */; };
+		E4B6C6AC19B9985800602D46 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6AB19B9985800602D46 /* GLKit.framework */; };
+		E4B6C6AE19B9986C00602D46 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6AD19B9986C00602D46 /* ImageIO.framework */; };
+		E4B6C6B019B9988400602D46 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6AF19B9988400602D46 /* libc++.dylib */; };
+		E4B6C6B219B998A800602D46 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6B119B998A800602D46 /* libicucore.dylib */; };
+		E4B6C6B419B998C300602D46 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6B319B998C300602D46 /* libz.dylib */; };
+		E4B6C6B619B998D000602D46 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6B519B998D000602D46 /* OpenGLES.framework */; };
+		E4B6C6B819B998DC00602D46 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6B719B998DC00602D46 /* QuartzCore.framework */; };
+		E4B6C6BC19B9999400602D46 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E4B6C6BA19B9999400602D46 /* GoogleMaps.bundle */; };
+		E4B6C6BD19B9999400602D46 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6BB19B9999400602D46 /* GoogleMaps.framework */; };
 		E4B7ED4519B6EE9D00928AB3 /* more.png in Resources */ = {isa = PBXBuildFile; fileRef = E4B7ED4419B6EE9D00928AB3 /* more.png */; };
 		E4B81E8819B5EE4D007B7A15 /* PCarCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B81E8719B5EE4D007B7A15 /* PCarCustomCell.m */; };
 /* End PBXBuildFile section */
@@ -280,6 +291,17 @@
 		E4929C7F19A731DD0031C3C6 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		E4929C8119A731E30031C3C6 /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
 		E4B18E2919A20E2800687652 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		E4B6C6A719B9982E00602D46 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E4B6C6A919B9983A00602D46 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		E4B6C6AB19B9985800602D46 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		E4B6C6AD19B9986C00602D46 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		E4B6C6AF19B9988400602D46 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		E4B6C6B119B998A800602D46 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		E4B6C6B319B998C300602D46 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		E4B6C6B519B998D000602D46 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		E4B6C6B719B998DC00602D46 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E4B6C6BA19B9999400602D46 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
+		E4B6C6BB19B9999400602D46 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		E4B7ED4419B6EE9D00928AB3 /* more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more.png; sourceTree = "<group>"; };
 		E4B81E8619B5EE4D007B7A15 /* PCarCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCarCustomCell.h; sourceTree = "<group>"; };
 		E4B81E8719B5EE4D007B7A15 /* PCarCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCarCustomCell.m; sourceTree = "<group>"; };
@@ -290,15 +312,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BF9ACCB19780E0100502807 /* SystemConfiguration.framework in Frameworks */,
+				E4B6C6B819B998DC00602D46 /* QuartzCore.framework in Frameworks */,
+				E4B6C6B619B998D000602D46 /* OpenGLES.framework in Frameworks */,
+				E4B6C6B419B998C300602D46 /* libz.dylib in Frameworks */,
+				E4B6C6B219B998A800602D46 /* libicucore.dylib in Frameworks */,
+				E4B6C6B019B9988400602D46 /* libc++.dylib in Frameworks */,
+				E4B6C6AE19B9986C00602D46 /* ImageIO.framework in Frameworks */,
+				E4B6C6AC19B9985800602D46 /* GLKit.framework in Frameworks */,
+				E4B6C6AA19B9983A00602D46 /* CoreText.framework in Frameworks */,
+				E4B6C6A819B9982E00602D46 /* AVFoundation.framework in Frameworks */,
 				E4B18E2A19A20E2800687652 /* SDWebImage.framework in Frameworks */,
 				8BED85DB197EA280002B39A6 /* CoreMotion.framework in Frameworks */,
 				8BF9ACCD19780E0900502807 /* CFNetwork.framework in Frameworks */,
-				8BF9ACCB19780E0100502807 /* SystemConfiguration.framework in Frameworks */,
 				8BF9AC8B1977CC4900502807 /* CoreLocation.framework in Frameworks */,
 				8BF9AC891977CC3C00502807 /* MapKit.framework in Frameworks */,
 				8B5BB0091973FF8E000080D9 /* CoreGraphics.framework in Frameworks */,
 				8B5BB00D1973FF8E000080D9 /* CoreData.framework in Frameworks */,
 				8B5BB00B1973FF8E000080D9 /* UIKit.framework in Frameworks */,
+				E4B6C6BD19B9999400602D46 /* GoogleMaps.framework in Frameworks */,
 				8B5BB0071973FF8E000080D9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +391,15 @@
 		8B5BB0051973FF8E000080D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4B6C6B719B998DC00602D46 /* QuartzCore.framework */,
+				E4B6C6B519B998D000602D46 /* OpenGLES.framework */,
+				E4B6C6B319B998C300602D46 /* libz.dylib */,
+				E4B6C6B119B998A800602D46 /* libicucore.dylib */,
+				E4B6C6AF19B9988400602D46 /* libc++.dylib */,
+				E4B6C6AD19B9986C00602D46 /* ImageIO.framework */,
+				E4B6C6AB19B9985800602D46 /* GLKit.framework */,
+				E4B6C6A919B9983A00602D46 /* CoreText.framework */,
+				E4B6C6A719B9982E00602D46 /* AVFoundation.framework */,
 				E4B18E2919A20E2800687652 /* SDWebImage.framework */,
 				8BED85DA197EA280002B39A6 /* CoreMotion.framework */,
 				8BF9ACCC19780E0900502807 /* CFNetwork.framework */,
@@ -377,6 +418,7 @@
 		8B5BB00E1973FF8E000080D9 /* PaxiApp */ = {
 			isa = PBXGroup;
 			children = (
+				E4B6C6B919B9999400602D46 /* GoogleMaps */,
 				B93437D919AF493B000CFD79 /* CreditCardValidation */,
 				8BF123B9197CF59A00A460EF /* img.png */,
 				E4B7ED4419B6EE9D00928AB3 /* more.png */,
@@ -780,6 +822,15 @@
 			path = CustomAnnotation;
 			sourceTree = "<group>";
 		};
+		E4B6C6B919B9999400602D46 /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				E4B6C6BA19B9999400602D46 /* GoogleMaps.bundle */,
+				E4B6C6BB19B9999400602D46 /* GoogleMaps.framework */,
+			);
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -866,6 +917,7 @@
 			files = (
 				8BED8590197E5746002B39A6 /* PFavoriteDriverCell.xib in Resources */,
 				8BF7CE3719765E7B00DD9D76 /* car1.png in Resources */,
+				E4B6C6BC19B9999400602D46 /* GoogleMaps.bundle in Resources */,
 				E4B7ED4519B6EE9D00928AB3 /* more.png in Resources */,
 				8BCCF97A19751DF5000644A6 /* PCardInfoVC.xib in Resources */,
 				8BED8580197E40D8002B39A6 /* PFavoriteAddressVC.xib in Resources */,
@@ -1097,10 +1149,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PaxiApp/GoogleMaps",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PaxiApp/PaxiApp-Prefix.pch";
 				INFOPLIST_FILE = "PaxiApp/PaxiApp-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Paxi;
 				PROVISIONING_PROFILE = "4d4dbc4d-34cb-4e39-9ede-a0adbc1bf069";
 				WRAPPER_EXTENSION = app;
@@ -1117,10 +1171,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PaxiApp/GoogleMaps",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PaxiApp/PaxiApp-Prefix.pch";
 				INFOPLIST_FILE = "PaxiApp/PaxiApp-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = Paxi;
 				PROVISIONING_PROFILE = "4d4dbc4d-34cb-4e39-9ede-a0adbc1bf069";
 				WRAPPER_EXTENSION = app;

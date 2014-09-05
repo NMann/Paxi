@@ -31,7 +31,7 @@ static PAppManager *_sharedAppManager = nil;
         dayString=[NSString stringWithFormat:@"%@,%@",dayString,[dateformat stringFromDate:date]];
 
     }
-    else if (day==3)
+    else if (day==3||day==23)
     {
         dayString=[NSString stringWithFormat:@"%ldrd",(long)day];
         [dateformat setDateFormat:@"MMMM"];
@@ -75,7 +75,7 @@ static PAppManager *_sharedAppManager = nil;
         [dateformat setDateFormat:@"EEE"];
         dayString=[NSString stringWithFormat:@"%@\n%@.",dayString,[dateformat stringFromDate:date]];
         
-    }else if (day==3)
+    }else if (day==3||day==23)
     {
         dayString=[NSString stringWithFormat:@"%ldrd",(long)day];
         [dateformat setDateFormat:@"MMMM"];

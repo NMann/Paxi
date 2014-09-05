@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 
-@interface PRouteViewController : UIViewController<MKMapViewDelegate>
+@interface PRouteViewController : UIViewController<GMSMapViewDelegate>
+
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *detailView;
 @property(nonatomic,strong)IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UIButton *m_routeDetailButton;
+@property (strong, nonatomic) IBOutlet UIView *m_mapViewContainer;
+
 
 
 @property(nonatomic,strong)NSString *strSourceAddress;

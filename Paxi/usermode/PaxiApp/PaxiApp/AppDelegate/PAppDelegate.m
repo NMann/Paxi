@@ -9,6 +9,8 @@
 #import "PAppDelegate.h"
 #import "PSignUpLoginVC.h"
 #import "PHomeViewController.h"
+#import <GoogleMaps/GoogleMaps.h>
+
 @implementation PAppDelegate
 
 
@@ -41,6 +43,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    [GMSServices provideAPIKey:@"AIzaSyBeU6UNAquC81dZW-fQhXEIFqx_mfTc3x8"];
     [[UITextField appearance]setTintColor:[UIColor lightTextColor]];
      [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"Navigation"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance]setTintColor:[UIColor whiteColor]];

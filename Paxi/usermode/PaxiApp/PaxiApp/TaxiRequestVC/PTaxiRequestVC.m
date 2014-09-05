@@ -16,7 +16,10 @@
 
 @end
 
-@implementation PTaxiRequestVC
+@implementation PTaxiRequestVC{
+       NSMutableData *webData;
+        NSMutableArray *locationNameArray;
+}
 @synthesize locationTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -39,7 +42,14 @@
     // Do any additional setup after loading the view from its nib.
     //[self.scrollView setContentSize:CGSizeMake(320, 424)];
     [[PAppManager sharedData] m_AddPadding:self.locationTextField];
+    webData=[[NSMutableData alloc]init];
+    locationNameArray=[[NSMutableArray alloc]init];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(m_SearchLocation:)
+                                                name:UITextFieldTextDidChangeNotification object:self.locationTextField];
+
     [self m_AddNavigationBarItem];
+    self.locationTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 }
 #pragma mark - Method To add Navigation Bar item-
@@ -109,10 +119,57 @@
 {
     self.tabBarController.selectedIndex=2;
 }
+-(IBAction)m_SearchLocation:(id)sender
+{
+    if ([self.locationTextField.text length]>0)
+    {
+        NSString *urlString=[[NSString stringWithFormat:@"%@getLocations&keyword=%@",BaseURLString,self.locationTextField.text] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        NSURLRequest *Request=[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+        NSURLConnection  *Connection=[[NSURLConnection alloc]initWithRequest:Request delegate:self];
+        NSLog(@"%@",Connection);
+    }
+}
+#pragma mark-
+#pragma mark - NSURL Connection  Delegate-
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    [webData setLength:0];
+}
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"%@",error.description);
+}
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [webData appendData:data];
+    
+}
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    //  NSString *strResult =[[NSString alloc]initWithData:webData encoding:NSUTF8StringEncoding];
+    NSMutableDictionary *responseDict=[NSJSONSerialization JSONObjectWithData:webData options:NSJSONReadingAllowFragments error:nil ];
+    NSLog(@"%@",responseDict);
+    if ([[responseDict objectForKey:@"data"] count] >0)
+    {
+        [locationNameArray removeAllObjects];
+        [locationNameArray addObjectsFromArray:[[responseDict objectForKey:@"data"] valueForKey:@"locationname"]];
+        
+        [self.locationTableView setHidden:NO];
+        [self.locationTableView reloadData];
+        self.locationTableView.delegate =self;
+        self.locationTableView.dataSource =self;
+        [self.scrollView setContentOffset:CGPointMake(0, 170)];
+     }else{
+        [self.locationTableView setHidden:YES];
+    }
+    
+}
 #pragma mark - TextField Delegate-
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    [self.scrollView setContentOffset:CGPointMake(0, 160)];
+    [self.scrollView setContentOffset:CGPointMake(0, 170)];
     return YES;
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -121,11 +178,15 @@
     [textField resignFirstResponder];
     return YES;
 }
+//-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+//     return YES;
+//}
+
 #pragma mark - MapView Delegate-
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     CLLocationCoordinate2D loc = [userLocation coordinate];
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(loc, 500,500);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(loc, 200,200);
     [self.mapView setRegion:region animated:YES];
     [self addCustomAnnotation:loc withAddress:@"Test"] ;
 }
@@ -158,7 +219,63 @@
         return nil ;
     }
 }
-
+-(void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
+    MKAnnotationView *ulv = [mapView viewForAnnotation:mapView.userLocation];
+    ulv.hidden = YES;
+    
+}
+#pragma mark - TableView Delegate and DataSource Method-
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [locationNameArray count];
+    // return [locationNameArray count]+1;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40.0f;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+     [self.locationTextField setText:[locationNameArray objectAtIndex:indexPath.row]] ;
+    [self.locationTableView setHidden:YES];
+    
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentif = @"Cell";
+    UITableViewCell *cell=(UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentif];
+    if (cell==Nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentif];
+        [cell.contentView setBackgroundColor:[UIColor clearColor]];
+        
+    }
+    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    
+    UIImageView *pinImage=[[UIImageView alloc]init];
+    pinImage.frame=CGRectMake(18, 11, 21, 27);
+    [pinImage setImage:[UIImage imageNamed:@"pin"]];
+    [cell.contentView addSubview:pinImage];
+    
+    UILabel *titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(55, 15, 220, 21)];
+    [titleLabel setFont:[UIFont fontWithName:@"Helvetica Neue" size:17.0]];
+    titleLabel.textColor=[UIColor colorWithRed:149/255.0 green:200/255.0 blue:201/255.0 alpha:1.0];
+    titleLabel.text=[locationNameArray objectAtIndex:indexPath.row];
+   /* if ([locationNameArray count]>1 &&indexPath.row!=[locationNameArray count])
+    {
+        titleLabel.text=[locationNameArray objectAtIndex:indexPath.row];
+    }*/
+    [cell.contentView addSubview:titleLabel];
+   
+    return cell;
+}
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor clearColor]];
+}
 
 #pragma mark - Memory Management Method-
 - (void)didReceiveMemoryWarning
