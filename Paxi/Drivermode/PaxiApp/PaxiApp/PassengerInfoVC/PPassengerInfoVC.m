@@ -13,7 +13,13 @@
 
 @end
 
-@implementation PPassengerInfoVC
+@implementation PPassengerInfoVC{
+    NSArray *path ;
+    CLLocationCoordinate2D userCurrentLoc ;
+    GMSMapView *googleMapView ;
+    Boolean noStartSet ;
+    CLLocationCoordinate2D startPoint;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,7 +51,7 @@
     {
         self.nameLabel.text=self.taxiRequestDetail.strUserName;
     }
-     [self renderMapView] ;
+  
 }
 - (void)viewDidLoad
 {
@@ -55,43 +61,114 @@
     self.imageBorderButton.layer.borderWidth=1.0;
     self.profileImageView.layer.cornerRadius=25.0;
     [self m_AddNavigationBarItem];
+   
+    [self renderLocationView];
     
 }
-#pragma mark -Custom Method
--(void)renderMapView
+#pragma mark Custom Methods
+#pragma mark GoogleMaps Methods
+-(void)renderLocationView
 {
-    CLLocationCoordinate2D destinationCoords  = [self getLocationFromAddressString:self.taxiRequestDetail.strDestinationAddress] ;
-    MKPlacemark *destinationPlacemark = [[MKPlacemark alloc] initWithCoordinate:destinationCoords addressDictionary:nil];
-    MKMapItem *destination = [[MKMapItem alloc] initWithPlacemark:destinationPlacemark];
-    CLLocationCoordinate2D sourceCoords  =  [self getLocationFromAddressString:self.taxiRequestDetail.strSourceAddress] ;
-    MKPlacemark *sourcePlacemark = [[MKPlacemark alloc] initWithCoordinate:sourceCoords addressDictionary:nil];
-    MKMapItem *source = [[MKMapItem alloc] initWithPlacemark:sourcePlacemark];
-    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
-    [request setSource:[MKMapItem mapItemForCurrentLocation]];
-    [request setSource:source] ;
-    [request setDestination:destination];
-    [request setTransportType:MKDirectionsTransportTypeAutomobile];
-    [request setRequestsAlternateRoutes:NO];
-    MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
-    [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error)
-     {
-         if ( ! error && [response routes] > 0)
-         {
-             MKRoute *route = [[response routes] objectAtIndex:0];
-             NSLog(@"expectedTravelTime> %f distance: %f transportType: %u",route.expectedTravelTime,route.distance,route.transportType) ;
-             if(round(route.expectedTravelTime) != 0)
-             {
-                 int minTime = round(route.expectedTravelTime-120);
-                 int maxTime =round(route.expectedTravelTime+120) ;
-                 NSLog(@"min: %d max: %d",minTime,maxTime) ;
-                 self.timeLabel.text = [NSString stringWithFormat:@"%@ - %@",[self formatTravelTime:minTime],[self formatTravelTime:maxTime]] ;
-             }
-         }
-         else
-         {
-             NSLog(@"Error %@",error) ;
-         }
-     }];
+    self.navigationItem.title = @"Location" ;
+    [self.navigationController setNavigationBarHidden:NO] ;
+    
+    
+    // render GoogleMap View
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.868
+                                                            longitude:151.2086
+                                                                 zoom:12];
+    googleMapView = [GMSMapView mapWithFrame:self.m_mapViewContainer.bounds camera: camera];
+    googleMapView.settings.compassButton = YES;
+    googleMapView.settings.myLocationButton = YES;
+    googleMapView.delegate = self ;
+    googleMapView.userInteractionEnabled = YES ;
+    
+    [googleMapView addObserver:self
+                    forKeyPath:@"myLocation"
+                       options:NSKeyValueObservingOptionNew
+                       context:NULL];
+    
+    [self.m_mapViewContainer addSubview:googleMapView] ;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        googleMapView.myLocationEnabled = YES;
+       [self getMapRoute];
+    });
+    
+    
+}
+
+-(void)getMapRoute
+{
+    [googleMapView clear] ;
+
+    NSString *baseUrl = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/directions/json?origin=%@&destination=%@&sensor=true",self.taxiRequestDetail.strSourceAddress,self.taxiRequestDetail.strDestinationAddress];
+    
+    NSLog(@"url: %@",baseUrl) ;
+    NSURL *url = [NSURL URLWithString:[baseUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSError *error = nil;
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        NSArray *routes = [result objectForKey:@"routes"];
+        if(routes.count >0)
+        {
+            NSDictionary *firstRoute = [routes objectAtIndex:0];
+            
+            //Mark Annotation
+            NSDictionary *leg =  [[firstRoute objectForKey:@"legs"] objectAtIndex:0];
+            
+            //Format Time
+            float totalSeconds = [[[leg objectForKey:@"duration"] objectForKey:@"value"] floatValue] ;
+            int minTime = round(totalSeconds-120);
+            int maxTime =round(totalSeconds+120) ;
+            self.timeLabel.text = [NSString stringWithFormat:@"%@ - %@",[self formatTravelTime:minTime],[self formatTravelTime:maxTime]] ;
+        }
+    }];
+    
+    
+}
+
+-(NSString *)formatTravelTime:(NSInteger)totalSeconds
+{
+    //int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60) % 60;
+    int hours = totalSeconds / 3600;
+    if(hours != 0)
+    {
+        return [NSString stringWithFormat:@"%dh %dm",hours, minutes];
+    }
+    else
+    {
+        return [NSString stringWithFormat:@"%dm", minutes];
+    }
+}
+
+-(NSString*)getCurrentLocationAddress:(CLLocationCoordinate2D)coords
+{
+    NSString *address ;
+    NSString *urlString= [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?latlng=%f,%f&sensor=false" ,coords.latitude,coords.longitude];
+   NSString *newString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    NSURL *url=[NSURL URLWithString:newString];
+    NSData *data=[NSData dataWithContentsOfURL:url];
+    NSDictionary *json=[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:Nil];
+    NSArray *results = [json valueForKey:@"results"];
+    if(results.count >0){
+        address = [[results objectAtIndex:0] objectForKey:@"formatted_address"] ;
+    }
+    return address;
+   }
+#pragma mark - KVO updates
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
+    CLLocationCoordinate2D coords = location.coordinate ;
+    
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.icon = [UIImage imageNamed:(@"marker.png")];
+    marker.position = coords;
+    marker.title =[self getCurrentLocationAddress:coords];
+    marker.map = googleMapView;
+    [googleMapView animateToLocation:coords];
 }
 
 #pragma mark -Method To Add Navigation Bar Item-
@@ -220,77 +297,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-#pragma mark MapView Utility Methods
--(CLLocationCoordinate2D) getLocationFromAddressString:(NSString*) addressStr
-{
-    double latitude = 0, longitude = 0;
-    NSString *esc_addr =  [addressStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *req = [NSString stringWithFormat:@"http://maps.google.com/maps/api/geocode/json?sensor=false&address=%@", esc_addr];
-    NSString *result = [NSString stringWithContentsOfURL:[NSURL URLWithString:req] encoding:NSUTF8StringEncoding error:NULL];
-    if (result) {
-        NSScanner *scanner = [NSScanner scannerWithString:result];
-        if ([scanner scanUpToString:@"\"lat\" :" intoString:nil] && [scanner scanString:@"\"lat\" :" intoString:nil]) {
-            [scanner scanDouble:&latitude];
-            if ([scanner scanUpToString:@"\"lng\" :" intoString:nil] && [scanner scanString:@"\"lng\" :" intoString:nil]) {
-                [scanner scanDouble:&longitude];
-            }
-        }
-    }
-    CLLocationCoordinate2D center;
-    center.latitude = latitude;
-    center.longitude = longitude;
-    return center;
-}
 
--(NSString *)formatTravelTime:(NSInteger)totalSeconds
-{
-    //int seconds = totalSeconds % 60;
-    int minutes = (totalSeconds / 60) % 60;
-    int hours = totalSeconds / 3600;
-    if(hours != 0)
-    {
-        return [NSString stringWithFormat:@"%dh %dm",hours, minutes];
-    }
-    else
-    {
-        return [NSString stringWithFormat:@"%dm", minutes];
-    }
-    
-}
 
-#pragma mark - Map View Delegate Method
--(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
-    CLLocationCoordinate2D cords = mapView.userLocation.location.coordinate ;
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(cords, 1000.0, 1000.0) ;
-    [mapView setRegion:region animated:YES] ;
-    
-    CustomAnnotation *customAnnotation = [[CustomAnnotation alloc]initWithTitle:self.taxiRequestDetail.strSourceAddress Location:cords] ;
-    [mapView addAnnotation:customAnnotation] ;
-    
-    mapView.showsUserLocation = NO ;
-    
-}
 
--(MKAnnotationView*)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
-    // NSLog(@"viewForAnnotation ") ;
-    if([annotation isKindOfClass:[CustomAnnotation class]])
-    {
-        CustomAnnotation *customAnnotation = (CustomAnnotation*)annotation ;
-        MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"CustomAnnotation"] ;
-        if(annotationView == nil)
-        {
-            annotationView = customAnnotation.annotationView ;
-        }
-        else
-        {
-            annotationView.annotation = annotation ;
-        }
-        return annotationView ;
-    }
-    else{
-        return nil ;
-    }
-}
 
 @end

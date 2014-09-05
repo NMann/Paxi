@@ -89,6 +89,16 @@
 		E4929C7219A7291A0031C3C6 /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = E4929C7119A7291A0031C3C6 /* marker.png */; };
 		E4929C7619A7292F0031C3C6 /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E4929C7519A7292F0031C3C6 /* CustomAnnotation.m */; };
 		E4B18E2C19A20E6F00687652 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B18E2B19A20E6F00687652 /* SDWebImage.framework */; };
+		E4B6C6C119B9B6B900602D46 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E4B6C6BF19B9B6B900602D46 /* GoogleMaps.bundle */; };
+		E4B6C6C219B9B6B900602D46 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6C019B9B6B900602D46 /* GoogleMaps.framework */; };
+		E4B6C6C419B9B9A500602D46 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6C319B9B9A500602D46 /* AVFoundation.framework */; };
+		E4B6C6C619B9B9B700602D46 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6C519B9B9B700602D46 /* CoreText.framework */; };
+		E4B6C6C819B9B9BE00602D46 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6C719B9B9BE00602D46 /* GLKit.framework */; };
+		E4B6C6CA19B9B9D800602D46 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6C919B9B9D800602D46 /* libc++.dylib */; };
+		E4B6C6CC19B9BA0D00602D46 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6CB19B9BA0D00602D46 /* libicucore.dylib */; };
+		E4B6C6CE19B9BA1D00602D46 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6CD19B9BA1D00602D46 /* libz.dylib */; };
+		E4B6C6D019B9BA2900602D46 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6CF19B9BA2900602D46 /* OpenGLES.framework */; };
+		E4B6C6D219B9BA3300602D46 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4B6C6D119B9BA3200602D46 /* QuartzCore.framework */; };
 		E4BCBB6519AC4F7400D28A2A /* PMyAccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BCBB6319AC4F7400D28A2A /* PMyAccountDetailViewController.m */; };
 		E4BCBB6619AC4F7400D28A2A /* PMyAccountDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BCBB6419AC4F7400D28A2A /* PMyAccountDetailViewController.xib */; };
 		E4E2337519B72A1300F2116F /* callbg.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E2337419B72A1300F2116F /* callbg.png */; };
@@ -231,6 +241,16 @@
 		E4929C7419A7292F0031C3C6 /* CustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
 		E4929C7519A7292F0031C3C6 /* CustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
 		E4B18E2B19A20E6F00687652 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		E4B6C6BF19B9B6B900602D46 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
+		E4B6C6C019B9B6B900602D46 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		E4B6C6C319B9B9A500602D46 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E4B6C6C519B9B9B700602D46 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		E4B6C6C719B9B9BE00602D46 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		E4B6C6C919B9B9D800602D46 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		E4B6C6CB19B9BA0D00602D46 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		E4B6C6CD19B9BA1D00602D46 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		E4B6C6CF19B9BA2900602D46 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		E4B6C6D119B9BA3200602D46 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E4BCBB6219AC4F7400D28A2A /* PMyAccountDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMyAccountDetailViewController.h; path = PMyAccountDetailVC/PMyAccountDetailViewController.h; sourceTree = "<group>"; };
 		E4BCBB6319AC4F7400D28A2A /* PMyAccountDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMyAccountDetailViewController.m; path = PMyAccountDetailVC/PMyAccountDetailViewController.m; sourceTree = "<group>"; };
 		E4BCBB6419AC4F7400D28A2A /* PMyAccountDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PMyAccountDetailViewController.xib; path = PMyAccountDetailVC/PMyAccountDetailViewController.xib; sourceTree = "<group>"; };
@@ -242,12 +262,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B0CFDCE199B628A00A21157 /* MessageUI.framework in Frameworks */,
-				8BB875E51993B57800FE2CBE /* ImageIO.framework in Frameworks */,
-				8BDCE1F21973DD4600C20051 /* CoreLocation.framework in Frameworks */,
-				8BDCE1F01973DD3A00C20051 /* MapKit.framework in Frameworks */,
 				8BFB86C8196D830E00F6B296 /* SystemConfiguration.framework in Frameworks */,
+				E4B6C6D219B9BA3300602D46 /* QuartzCore.framework in Frameworks */,
+				E4B6C6D019B9BA2900602D46 /* OpenGLES.framework in Frameworks */,
+				E4B6C6CE19B9BA1D00602D46 /* libz.dylib in Frameworks */,
+				E4B6C6CC19B9BA0D00602D46 /* libicucore.dylib in Frameworks */,
+				E4B6C6CA19B9B9D800602D46 /* libc++.dylib in Frameworks */,
+				8BB875E51993B57800FE2CBE /* ImageIO.framework in Frameworks */,
+				E4B6C6C819B9B9BE00602D46 /* GLKit.framework in Frameworks */,
+				E4B6C6C619B9B9B700602D46 /* CoreText.framework in Frameworks */,
+				8BDCE1F21973DD4600C20051 /* CoreLocation.framework in Frameworks */,
+				E4B6C6C419B9B9A500602D46 /* AVFoundation.framework in Frameworks */,
+				8B0CFDCE199B628A00A21157 /* MessageUI.framework in Frameworks */,
+				8BDCE1F01973DD3A00C20051 /* MapKit.framework in Frameworks */,
 				8BFB86C6196D82A400F6B296 /* CFNetwork.framework in Frameworks */,
+				E4B6C6C219B9B6B900602D46 /* GoogleMaps.framework in Frameworks */,
 				8BC97A34196D1DC700AC727D /* CoreGraphics.framework in Frameworks */,
 				8BC97A38196D1DC700AC727D /* CoreData.framework in Frameworks */,
 				E4B18E2C19A20E6F00687652 /* SDWebImage.framework in Frameworks */,
@@ -388,6 +417,14 @@
 		8BC97A30196D1DC700AC727D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4B6C6D119B9BA3200602D46 /* QuartzCore.framework */,
+				E4B6C6CF19B9BA2900602D46 /* OpenGLES.framework */,
+				E4B6C6CD19B9BA1D00602D46 /* libz.dylib */,
+				E4B6C6CB19B9BA0D00602D46 /* libicucore.dylib */,
+				E4B6C6C919B9B9D800602D46 /* libc++.dylib */,
+				E4B6C6C719B9B9BE00602D46 /* GLKit.framework */,
+				E4B6C6C519B9B9B700602D46 /* CoreText.framework */,
+				E4B6C6C319B9B9A500602D46 /* AVFoundation.framework */,
 				E4B18E2B19A20E6F00687652 /* SDWebImage.framework */,
 				8B0CFDCD199B628A00A21157 /* MessageUI.framework */,
 				8BB875E41993B57800FE2CBE /* ImageIO.framework */,
@@ -407,6 +444,7 @@
 		8BC97A39196D1DC700AC727D /* PaxiApp */ = {
 			isa = PBXGroup;
 			children = (
+				E4B6C6BE19B9B6B900602D46 /* GoogleMaps */,
 				E4929C7319A7292F0031C3C6 /* CustomAnnotation */,
 				8BFB8663196D320700F6B296 /* AppDelegate */,
 				8B2DEA25196E6590002A0666 /* SignUpViewController */,
@@ -644,6 +682,15 @@
 			path = CustomAnnotation;
 			sourceTree = "<group>";
 		};
+		E4B6C6BE19B9B6B900602D46 /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				E4B6C6BF19B9B6B900602D46 /* GoogleMaps.bundle */,
+				E4B6C6C019B9B6B900602D46 /* GoogleMaps.framework */,
+			);
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
 		E4BCBB6119AC4F1100D28A2A /* PMyAccountDetailVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -756,6 +803,7 @@
 				8BC1275B196FE8D7001DB003 /* PMyProfileVC.xib in Resources */,
 				8BFB86C2196D7E0400F6B296 /* img.png in Resources */,
 				8BDCE1F81973F2AC00C20051 /* PRouteViewController.xib in Resources */,
+				E4B6C6C119B9B6B900602D46 /* GoogleMaps.bundle in Resources */,
 				8BDCE1E31973BC8600C20051 /* PTaxiRequestVC.xib in Resources */,
 				8B2DEA2C196E74B3002A0666 /* PSignUpViewController_5.xib in Resources */,
 				8BDCE1EE1973D23D00C20051 /* PPassengerInfoVC.xib in Resources */,
@@ -944,12 +992,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Amaneet Brar (V888ZRNJ39)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amaneet Brar (V888ZRNJ39)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/varunchanni/Desktop,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PaxiApp/GoogleMaps",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PaxiApp/PaxiApp-Prefix.pch";
@@ -966,12 +1015,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Amaneet Brar (V888ZRNJ39)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Amaneet Brar (V888ZRNJ39)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/varunchanni/Desktop,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/PaxiApp/GoogleMaps",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PaxiApp/PaxiApp-Prefix.pch";

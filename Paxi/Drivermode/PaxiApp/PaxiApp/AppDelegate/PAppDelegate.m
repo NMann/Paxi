@@ -9,6 +9,8 @@
 #import "PAppDelegate.h"
 #import "PLoginViewController.h"
 #import "PHomeViewController.h"
+#import <GoogleMaps/GoogleMaps.h>
+
 @implementation PAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -40,6 +42,7 @@ BOOL locationStarted = FALSE;
 {
     locationStarted = FALSE;
     [self FetchLocation];
+    [GMSServices provideAPIKey:@"AIzaSyBeU6UNAquC81dZW-fQhXEIFqx_mfTc3x8"];
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
      ( UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound)];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];

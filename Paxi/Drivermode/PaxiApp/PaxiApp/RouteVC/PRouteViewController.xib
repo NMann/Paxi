@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PRouteViewController">
             <connections>
-                <outlet property="mapView" destination="dyZ-GP-7DL" id="hZc-cb-mST"/>
+                <outlet property="m_mapViewContainer" destination="lIa-Ni-Pj2" id="biP-RX-dkv"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -15,13 +15,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="dyZ-GP-7DL">
-                    <rect key="frame" x="0.0" y="64" width="320" height="400"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="mIb-8t-A6o"/>
-                    </connections>
-                </mapView>
+                <view contentMode="scaleToFill" id="lIa-Ni-Pj2">
+                    <rect key="frame" x="0.0" y="65" width="320" height="400"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" id="yub-vP-dbe">
                     <rect key="frame" x="0.0" y="464" width="320" height="104"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>

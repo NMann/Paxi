@@ -193,10 +193,11 @@
     }
     else
     {
-        PPassengerInfoVC *passengerInfoVC=[[PPassengerInfoVC alloc]initWithNibName:@"PPassengerInfoVC" bundle:nil];
-        passengerInfoVC.taxiRequestDetail=[requestArray objectAtIndex:[sender tag]];
+       PPassengerInfoVC *passengerInfoVC=[[PPassengerInfoVC alloc]initWithNibName:@"PPassengerInfoVC" bundle:nil];
+       passengerInfoVC.taxiRequestDetail=[requestArray objectAtIndex:[sender tag]];
         [self.navigationController pushViewController:passengerInfoVC animated:YES];
-     /*   [SVProgressHUD showWithStatus:@"Accepting..."];
+        
+   /*     [SVProgressHUD showWithStatus:@"Accepting..."];
         NSString *string = [NSString stringWithFormat:@"&driverid=%@&requestid=%@",[[NSUserDefaults standardUserDefaults]valueForKey:userId] ,[[requestArray  valueForKey:@"strRequestId" ] objectAtIndex:[sender tag]]];
         NSLog(@"string is %@", string);
         [[PApiCall sharedInstance]m_GetApiResponse:@"acceptRequest" parameters:string onCompletion:^(NSDictionary *json) {

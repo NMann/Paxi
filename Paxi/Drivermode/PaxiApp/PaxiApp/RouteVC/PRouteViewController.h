@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "PTaxiRequest.h"
+#import <GoogleMaps/GoogleMaps.h>
 
-@interface PRouteViewController : UIViewController<MKMapViewDelegate>
+@interface PRouteViewController : UIViewController<GMSMapViewDelegate>
 @property(nonatomic,strong)PTaxiRequest *taxiRequestDetail;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UIView *m_mapViewContainer;
 - (IBAction)m_ArrivedButtonPressed:(id)sender;
 
 @end

@@ -10,7 +10,7 @@
                 <outlet property="detailView" destination="kQI-Fu-VWT" id="HZd-Mo-iVb"/>
                 <outlet property="imageBorderButton" destination="0Fu-hL-1lR" id="0du-bs-bhc"/>
                 <outlet property="locationLabel" destination="WvI-lR-PRf" id="oZT-1R-VDR"/>
-                <outlet property="mapView" destination="muz-Ov-krB" id="ee2-oe-uFc"/>
+                <outlet property="m_mapViewContainer" destination="CFy-Zb-Oyr" id="dCj-lB-Epo"/>
                 <outlet property="nameLabel" destination="v3s-Yf-5HV" id="4aU-Xs-8jW"/>
                 <outlet property="profileImageView" destination="D4p-oM-aF0" id="sgT-4L-DXQ"/>
                 <outlet property="timeLabel" destination="fJN-Rh-TC8" id="gvf-NQ-ej0"/>
@@ -22,13 +22,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="muz-Ov-krB">
-                    <rect key="frame" x="0.0" y="64" width="320" height="400"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="r2q-or-r8Q"/>
-                    </connections>
-                </mapView>
+                <view contentMode="scaleToFill" id="CFy-Zb-Oyr">
+                    <rect key="frame" x="0.0" y="65" width="320" height="400"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KLQ-Tg-zfa">
                     <rect key="frame" x="129" y="434" width="62" height="30"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>

@@ -32,10 +32,8 @@
 {
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:YES];
-    self.dateLabel.text=[dateFormat stringFromDate:[NSDate date]];
+    self.dateLabel.text=[[PAppManager sharedData]m_GetFormattedDate:[NSDate date]];
     self.locationLabel.text=[[NSUserDefaults standardUserDefaults]valueForKey:@"locationName"];
-    
-  
     
 }
 - (void)viewDidLoad

@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
 #import "PTaxiRequest.h"
-@interface PPassengerInfoVC : UIViewController<MFMessageComposeViewControllerDelegate>
+#import <GoogleMaps/GoogleMaps.h>
+
+@interface PPassengerInfoVC : UIViewController<MFMessageComposeViewControllerDelegate,GMSMapViewDelegate>
+@property (strong, nonatomic) IBOutlet UIView *m_mapViewContainer;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *detailView;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
